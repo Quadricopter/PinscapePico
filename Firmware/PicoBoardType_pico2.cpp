@@ -6,7 +6,10 @@
 // is set to "pico2" in the build configuration.
 
 
+#include <hardware/gpio.h>
+#include "Pinscape.h"
 #include "PicoBoardType.h"
+#include "GPIOManager.h"
 
 
 // Additional target-board-specific intialization
