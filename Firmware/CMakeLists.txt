@@ -238,6 +238,13 @@ target_link_libraries(
     tinyusb_board
 )
 
+if (PICO_CYW43_SUPPORTED)
+    # For led support on `pico_w` and `pico2_w` boards
+    target_link_libraries(
+        PinscapePico
+        pico_cyw43_arch_none
+    )
+endif()
 
 # create map/bin/hex files
 pico_add_extra_outputs(PinscapePico)
