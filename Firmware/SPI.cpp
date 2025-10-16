@@ -28,6 +28,9 @@ SPI SPI::inst[2]{
 // reserve an SPI unit for exclusive use
 bool SPI::ReserveExclusive(const char *newOwnerName)
 {
+    Log(LOG_INFO, "SPI::ReserveExclusive(%s)\n", newOwnerName);
+    return false;
+
     // if the unit has already been reserved, fail and log the conflict
     if (exclusiveOwner != nullptr)
     {
@@ -51,6 +54,9 @@ bool SPI::ReserveExclusive(const char *newOwnerName)
 // that implement the standard SPI Chip Select mechanism
 bool SPI::ReserveShared(const char *newOwnerName)
 {
+    Log(LOG_INFO, "SPI::ReserveShared(%s)\n", newOwnerName);
+    return false;
+
     // if the unit has already been reserved exclusive, fail and log the conflict
     if (exclusiveOwner != nullptr)
     {
@@ -70,6 +76,9 @@ bool SPI::ReserveShared(const char *newOwnerName)
 // Infer the SPI unit for a set of GPIO pin assignments
 SPI *SPI::InferUnit(int sck, int tx, int rx, int csn)
 {
+    Log(LOG_INFO, "SPI::InferUnit(%d, %d, %d, %d)\n", sck, tx, rx, csn);
+    return nullptr;
+
     // The SCLK and SIN pins must be SPI SCK and TX capable pins
     // (respectively) connected to the same SPI unit.  Note that
     // this struct lists the pin assignments in SCK/TX pairs by
